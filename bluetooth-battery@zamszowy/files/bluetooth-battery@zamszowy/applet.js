@@ -84,6 +84,7 @@ BtBattery.prototype = {
         this.settings.bind("enable-keyboards", "enable_keyboards", this._on_settings_change, null);
         this.settings.bind("enable-mice", "enable_mice", this._on_settings_change, null);
         this.settings.bind("enable-headphones", "enable_headphones", this._on_settings_change, null);
+        this.settings.bind("enable-gaming-inputs", "enable_gaming_inputs", this._on_settings_change, null);
         this.settings.bind("enable-others", "enable_others", this._on_settings_change, null);
         this.settings.bind("applet-icon", "applet_icon", this._on_settings_change, null);
         this.settings.bind("blacklist", "blacklist", null, null);
@@ -349,8 +350,9 @@ BtBattery.prototype = {
 
             if ((type == UPower.DeviceKind.KEYBOARD && !this.enable_keyboards)
                 || (type == UPower.DeviceKind.MOUSE && !this.enable_mice)
+                || (type == UPower.DeviceKind.GAMING_INPUT && !this.enable_gaming_inputs)
                 || ((type == UPower.DeviceKind.HEADPHONES || type == UPower.DeviceKind.HEADSET) && !this.enable_headphones)
-                || (type != UPower.DeviceKind.KEYBOARD && type != UPower.DeviceKind.MOUSE && type != UPower.DeviceKind.HEADPHONES && type != UPower.DeviceKind.HEADSET && !this.enable_others))
+                || (type != UPower.DeviceKind.KEYBOARD && type != UPower.DeviceKind.MOUSE && type != UPower.DeviceKind.GAMING_INPUT && type != UPower.DeviceKind.HEADPHONES && type != UPower.DeviceKind.HEADSET && !this.enable_others))
             {
                 continue;
             }
@@ -429,6 +431,8 @@ BtBattery.prototype = {
             return "keyboard-" + this.perc_to_3_digit_str(this.perc_round_to_10(batt));
         } else if (type == UPower.DeviceKind.MOUSE) {
             return "mouse-" + this.perc_to_3_digit_str(this.perc_round_to_10(batt));
+        } else if (type == UPower.DeviceKind.GAMING_INPUT) {
+            return "gaming-inputs-" + this.perc_to_3_digit_str(this.perc_round_to_10(batt));
         } else if (type == UPower.DeviceKind.HEADPHONES || type == UPower.DeviceKind.HEADSET) {
             return "headphones-" + this.perc_to_3_digit_str(this.perc_round_to_10(batt));
         } else {

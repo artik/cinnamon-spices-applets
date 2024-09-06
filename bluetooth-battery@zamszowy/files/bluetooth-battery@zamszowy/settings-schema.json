@@ -21,7 +21,7 @@
     "section0": {
       "type": "section",
       "title": "Enable battery monitoring for:",
-      "keys": ["enable-keyboards", "enable-mice", "enable-headphones", "enable-others"]
+      "keys": ["enable-keyboards", "enable-mice", "enable-gaming-inputs", "enable-headphones", "enable-others"]
     },
 
     "section1": {
@@ -77,6 +77,12 @@
     "type": "switch",
     "default": true,
     "description": "Mice"
+  },
+
+  "enable-gaming-inputs": {
+    "type": "switch",
+    "default": true,
+    "description": "Gaming Inputs"
   },
 
   "enable-headphones": {
